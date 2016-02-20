@@ -28,8 +28,3 @@ node_modules
 
 # NativeScript
 JustTweet/platforms
-
-# TypeScript unnecessary files
-.tscache
-**/*.js
-**/*.js.map
