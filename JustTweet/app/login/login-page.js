@@ -56,5 +56,5 @@ exports.login = function() {
             return Promise.reject();
         })
         .then(enableForm)
-        .then(navigation.goToListPage);
+        .then(navigation.goToTweetsPage);
 };

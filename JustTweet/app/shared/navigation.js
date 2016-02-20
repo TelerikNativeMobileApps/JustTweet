@@ -10,7 +10,7 @@ module.exports = {
 	},
 	goToTweetsPage: function() {
 		frameModule.topmost().navigate({
-			moduleName: "tweets/all",
+			moduleName: "tweets/tweets-page",
 		});
 	},
 	signOut: function() {

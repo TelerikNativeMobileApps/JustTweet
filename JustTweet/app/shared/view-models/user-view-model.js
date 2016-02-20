@@ -1,6 +1,7 @@
 var config = require("../../shared/config");
 var Observable = require("data/observable").Observable;
 var validator = require("email-validator");
+var http = require("http");
 
 function User(info) {
 	info = info || {};
@@ -14,20 +15,16 @@ function User(info) {
 	viewModel.login = function() {
 		return fetch(config.apiUrl + "token", {
 			method: "POST",
-			body: JSON.stringify({
-				username: viewModel.get("email"),
-				password: viewModel.get("password"),
-				grant_type: "password"
-			}),
+            body: 'username=' + viewModel.get("email") + '&password=' + viewModel.get("password") + '&grant_type=password',
 			headers: {
-				"Content-Type": "application/json"
+				"Content-Type": "application/x-www-form-urlencoded"
 			}
 		})
 		.then(handleErrors)
 		.then(function(response) {
-			return response.json();
+			return JSON.parse(response._bodyText);
 		}).then(function(data) {
-			config.token = data.Result.access_token;
+			config.token = data.access_token;
 		});
 	};
 
