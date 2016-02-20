@@ -1,6 +1,7 @@
 var config = require("../../shared/config");
 var Observable = require("data/observable").Observable;
 var validator = require("email-validator");
+var http = require("http");
 
 function User(info) {
 	info = info || {};
@@ -14,27 +15,24 @@ function User(info) {
 	viewModel.login = function() {
 		return fetch(config.apiUrl + "token", {
 			method: "POST",
-			body: JSON.stringify({
-				username: viewModel.get("email"),
-				password: viewModel.get("password"),
-				grant_type: "password"
-			}),
+            body: 'username=' + viewModel.get("email") + '&password=' + viewModel.get("password") + '&grant_type=password',
 			headers: {
-				"Content-Type": "application/json"
+				"Content-Type": "application/x-www-form-urlencoded"
 			}
 		})
-		.then(handleErrors)
+		.then(handleErrorsLogin)
 		.then(function(response) {
-			return response.json();
+			return JSON.parse(response._bodyText);
 		}).then(function(data) {
-			config.token = data.Result.access_token;
+			config.token = data.access_token;
 		});
 	};
 
 	viewModel.register = function() {
-		return fetch(config.apiUrl + "api/account/register", {
+		return http.request({
+            url: config.apiUrl + "api/account/register",
 			method: "POST",
-			body: JSON.stringify({
+			content: JSON.stringify({
 				Email: viewModel.get("email"),
 				Password: viewModel.get("password"),
 				ConfirmPassword: viewModel.get("password")
@@ -43,7 +41,7 @@ function User(info) {
 				"Content-Type": "application/json"
 			}
 		})
-		.then(handleErrors);
+		.then(handleErrorsRegister);
 	};
 
 	viewModel.isValidEmail = function() {
@@ -54,9 +52,15 @@ function User(info) {
 	return viewModel;
 }
 
-function handleErrors(response) {
+function handleErrorsRegister(response) {
+	if (response.statusCode != 200) {
+		throw Error(response.statusText);
+	}
+	return response;
+}
+
+function handleErrorsLogin(response) {
 	if (!response.ok) {
-		console.log(JSON.stringify(response));
 		throw Error(response.statusText);
 	}
 	return response;

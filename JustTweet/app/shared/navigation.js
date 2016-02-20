@@ -3,14 +3,14 @@ var frameModule = require("ui/frame");
 
 module.exports = {
 	goToLoginPage: function() {
-		frameModule.topmost().navigate("login/login");
+		frameModule.topmost().navigate("login/login-page");
 	},
 	goToRegisterPage: function() {
-		frameModule.topmost().navigate("register/register");
+		frameModule.topmost().navigate("register/register-page");
 	},
 	goToTweetsPage: function() {
 		frameModule.topmost().navigate({
-			moduleName: "tweets/all",
+			moduleName: "tweets/tweets-page",
 		});
 	},
 	signOut: function() {

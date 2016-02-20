@@ -1,4 +1,5 @@
 var viewModule = require("ui/core/view");
+var gestures = require("ui/gestures");
 var dialogsModule = require("ui/dialogs");
 var UserViewModel = require("~/shared/view-models/user-view-model");
 var navigation = require("~/shared/navigation");
@@ -23,11 +24,16 @@ exports.loaded = function(args) {
     password = page.getViewById("password");
     loginButton = page.getViewById("loginButton");
 
-    // logo.animate({ opacity: 0 })
-    //     .then(function() { return logo.animate({ opacity: 1, scale: { x: 2, y: 2 }, duration: 1000}); })
-    //     .then(function() { return logo.animate({ scale: { x: 1.3, y: 1.3} }); })
-    //     .then(function() {return logo.animate({ rotate: 45 }); })
-    //     .then(function() {return logo.animate({ rotate: 0 }); });
+    logo.animate({ opacity: 0 })
+        .then(function() { return logo.animate({ opacity: 1, scale: { x: 2, y: 2 }, duration: 1000}); })
+        .then(function() { return logo.animate({ scale: { x: 1.3, y: 1.3} }); })
+        .then(function() {return logo.animate({ rotate: 45 }); })
+        .then(function() {return logo.animate({ rotate: 0 }); });
+
+    page.on(gestures.GestureTypes.swipe, function (args) {
+        if (args.direction == 2) {
+            navigation.goToRegisterPage();
+        }
 };
 
 function disableForm() {
@@ -47,7 +53,8 @@ function enableForm() {
 exports.login = function() {
     disableForm();
     user.login()
-        .catch(function() {
+        .catch(function(e) {
+            console.log(e)
             dialogsModule.alert({
                 message: "Invalid email or password",
                 okButtonText: "OK"
@@ -56,5 +63,5 @@ exports.login = function() {
             return Promise.reject();
         })
         .then(enableForm)
-        .then(navigation.goToListPage);
+        .then(navigation.goToTweetsPage);
 };
