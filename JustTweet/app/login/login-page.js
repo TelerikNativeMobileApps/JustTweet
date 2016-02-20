@@ -1,4 +1,5 @@
 var viewModule = require("ui/core/view");
+var gestures = require("ui/gestures");
 var dialogsModule = require("ui/dialogs");
 var UserViewModel = require("~/shared/view-models/user-view-model");
 var navigation = require("~/shared/navigation");
@@ -28,6 +29,12 @@ exports.loaded = function(args) {
         .then(function() { return logo.animate({ scale: { x: 1.3, y: 1.3} }); })
         .then(function() {return logo.animate({ rotate: 45 }); })
         .then(function() {return logo.animate({ rotate: 0 }); });
+
+    page.on(gestures.GestureTypes.swipe, function (args) {
+        if (args.direction == 2) {
+            navigation.goToRegisterPage();
+        }
+    });
 };
 
 function disableForm() {

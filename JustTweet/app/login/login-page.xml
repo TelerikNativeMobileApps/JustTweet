@@ -7,8 +7,8 @@
         <TextField hint="Password" secure="true" id="password" text="{{ password }}"/>
         <activity-indicator busy="{{ authenticating }}" rowSpan="2" />
 
-        <Button text="Login" id="loginButton" tap="login"/>
-        <Button text="Register for JustTweet" />
+        <Button text="Login" id="loginButton" tap="login" />
+        <Label text="swipe to register ---&gt;" class="clue" />
 
     </StackLayout>
 </Page>

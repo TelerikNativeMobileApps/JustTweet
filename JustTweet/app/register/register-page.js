@@ -1,5 +1,6 @@
 var viewModule = require("ui/core/view");
 var enums = require("ui/enums");
+var gestures = require("ui/gestures");
 var dialogsModule = require("ui/dialogs");
 var UserViewModel = require("~/shared/view-models/user-view-model");
 var navigation = require("~/shared/navigation");
@@ -32,6 +33,12 @@ exports.loaded = function(args) {
         duration: 1000,
         curve: enums.AnimationCurve.spring
     }); });
+
+    page.on(gestures.GestureTypes.swipe, function (args) {
+        if (args.direction == 1) {
+            navigation.goToLoginPage();
+        }
+    });
 };
 
 function disableForm() {
