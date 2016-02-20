@@ -4,17 +4,20 @@
     background-repeat: no-repeat;
     font-size: 17;
 }
+
 TextField {
     background-color: white;
     margin: 10, 25;
     padding: 10;
 }
+
 Image {
-    margin-top: 20;
+    margin-top: 50;
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: 80;
+    margin-bottom: 40;
 }
+
 Button {
     background-color: transparent;
     color: white;
