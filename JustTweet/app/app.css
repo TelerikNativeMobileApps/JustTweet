@@ -18,6 +18,13 @@ TextField {
     margin-bottom: 40;
 }
 
+#registerImg {
+    margin-top: 30;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20;
+}
+
 Button {
     background-color: transparent;
     color: white;

@@ -3,7 +3,7 @@ var frameModule = require("ui/frame");
 
 module.exports = {
 	goToLoginPage: function() {
-		frameModule.topmost().navigate("login/login");
+		frameModule.topmost().navigate("login/login-page");
 	},
 	goToRegisterPage: function() {
 		frameModule.topmost().navigate("register/register");

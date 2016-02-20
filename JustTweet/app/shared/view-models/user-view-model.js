@@ -29,9 +29,10 @@ function User(info) {
 	};
 
 	viewModel.register = function() {
-		return fetch(config.apiUrl + "api/account/register", {
+		return http.request({
+            url: config.apiUrl + "api/account/register",
 			method: "POST",
-			body: JSON.stringify({
+			content: JSON.stringify({
 				Email: viewModel.get("email"),
 				Password: viewModel.get("password"),
 				ConfirmPassword: viewModel.get("password")
@@ -52,8 +53,7 @@ function User(info) {
 }
 
 function handleErrors(response) {
-	if (!response.ok) {
-		console.log(JSON.stringify(response));
+	if (response.statusCode != 200) {
 		throw Error(response.statusText);
 	}
 	return response;
