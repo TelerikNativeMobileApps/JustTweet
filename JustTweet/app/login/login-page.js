@@ -54,7 +54,8 @@ function enableForm() {
 exports.login = function() {
     disableForm();
     user.login()
-        .catch(function() {
+        .catch(function(e) {
+            console.log(e)
             dialogsModule.alert({
                 message: "Invalid email or password",
                 okButtonText: "OK"

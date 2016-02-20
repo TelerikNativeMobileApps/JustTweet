@@ -20,7 +20,7 @@ function User(info) {
 				"Content-Type": "application/x-www-form-urlencoded"
 			}
 		})
-		.then(handleErrors)
+		.then(handleErrorsLogin)
 		.then(function(response) {
 			return JSON.parse(response._bodyText);
 		}).then(function(data) {
@@ -41,7 +41,7 @@ function User(info) {
 				"Content-Type": "application/json"
 			}
 		})
-		.then(handleErrors);
+		.then(handleErrorsRegister);
 	};
 
 	viewModel.isValidEmail = function() {
@@ -52,8 +52,15 @@ function User(info) {
 	return viewModel;
 }
 
-function handleErrors(response) {
+function handleErrorsRegister(response) {
 	if (response.statusCode != 200) {
+		throw Error(response.statusText);
+	}
+	return response;
+}
+
+function handleErrorsLogin(response) {
+	if (!response.ok) {
 		throw Error(response.statusText);
 	}
 	return response;
