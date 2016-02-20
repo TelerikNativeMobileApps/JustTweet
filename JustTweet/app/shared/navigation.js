@@ -13,6 +13,11 @@ module.exports = {
 			moduleName: "tweets/tweets-page",
 		});
 	},
+	goToCreatePage: function() {
+		frameModule.topmost().navigate({
+			moduleName: "tweets/create-page",
+		});
+	},
 	signOut: function() {
 		config.invalidateToken();
 		frameModule.topmost().navigate({

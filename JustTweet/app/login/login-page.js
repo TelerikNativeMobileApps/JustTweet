@@ -34,6 +34,7 @@ exports.loaded = function(args) {
         if (args.direction == 2) {
             navigation.goToRegisterPage();
         }
+    });
 };
 
 function disableForm() {
