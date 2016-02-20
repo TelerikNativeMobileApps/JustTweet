@@ -3,10 +3,11 @@
 
         <Image src="~/images/logo.png" stretch="none" horizontalAlignment="center" id="logo"/>
 
-        <TextField hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
-        <TextField hint="Password" secure="true" />
+        <TextField hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none" id="email" text="{{ email }}"/>
+        <TextField hint="Password" secure="true" id="password" text="{{ password }}"/>
+        <activity-indicator busy="{{ authenticating }}" rowSpan="2" />
 
-        <Button text="Sign in" />
+        <Button text="Login" id="loginButton" tap="login"/>
         <Button text="Register for JustTweet" />
 
     </StackLayout>

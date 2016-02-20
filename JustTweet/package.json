@@ -1,11 +1,12 @@
 {
-	"nativescript": {
-		"id": "org.nativescript.JustTweet",
-		"tns-android": {
-			"version": "1.6.1"
-		}
-	},
-	"dependencies": {
-		"tns-core-modules": "1.6.0"
-	}
+  "nativescript": {
+    "id": "org.nativescript.JustTweet",
+    "tns-android": {
+      "version": "1.6.1"
+    }
+  },
+  "dependencies": {
+    "email-validator": "^1.0.4",
+    "tns-core-modules": "1.6.0"
+  }
 }
