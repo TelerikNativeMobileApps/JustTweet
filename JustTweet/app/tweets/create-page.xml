@@ -1,0 +1,10 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="onLoaded" navigatedTo="onNavigatedTo">
+   <StackLayout orientation="vertical">
+
+        <Image src="~/images/logo.png" stretch="none" horizontalAlignment="center" id="logo"/>
+
+        <TextField hint="post"   autocapitalizationType="none" id="post" text="{{ post }}"/>
+
+        <Button text="Post" id="postButton" tap="post"/>
+    </StackLayout>
+</Page>
