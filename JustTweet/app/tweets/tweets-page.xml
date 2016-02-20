@@ -1,3 +1,12 @@
 <Page loaded="loaded">
-    <Label text="Tweeeeeeeets :))))" />
+    <GridLayout rows="auto, *" columns="2*, *">
+        <ListView items="{{ tweetList }}" id="tweetList" row="1" colSpan="2">
+            <ListView.itemTemplate>
+                <GridLayout columns="*, auto">
+                    <Label text="{{ text }}"/>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+        <ActivityIndicator busy="{{ isLoading }}" rowSpan="2" colSpan="2" />
+    </GridLayout>
 </Page>

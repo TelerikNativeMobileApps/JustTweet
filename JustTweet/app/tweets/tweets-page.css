@@ -1,0 +1,14 @@
+
+Label {
+    margin: 10;
+    horizontal-align: center;
+    vertical-align: center;
+     color: white;
+     font-size: 40px;
+}
+TextField {
+    border-width: 5;
+    border-style: solid;
+    border-color: #034793;
+   
+}

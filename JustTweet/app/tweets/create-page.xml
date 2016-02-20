@@ -1,0 +1,7 @@
+<Page loaded="loaded">
+    <StackLayout orientation="vertical">
+        <Image src="~/images/logo.png" stretch="none" horizontalAlignment="center" id="logo" />
+        <TextView hint="tweet" autocapitalizationType="true" id="tweet" text="{{ tweet }}" />
+        <Button text="Post" tap="create" />
+    </StackLayout>
+</Page>
