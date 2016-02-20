@@ -1,10 +1,7 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="onLoaded" navigatedTo="onNavigatedTo">
-   <StackLayout orientation="vertical">
-
-        <Image src="~/images/logo.png" stretch="none" horizontalAlignment="center" id="logo"/>
-
-        <TextField hint="post"   autocapitalizationType="none" id="post" text="{{ post }}"/>
-
-        <Button text="Post" id="postButton" tap="post"/>
+<Page loaded="loaded">
+    <StackLayout orientation="vertical">
+        <Image src="~/images/logo.png" stretch="none" horizontalAlignment="center" id="logo" />
+        <TextView hint="tweet" autocapitalizationType="true" id="tweet" text="{{ tweet }}" />
+        <Button text="Post" tap="create" />
     </StackLayout>
 </Page>

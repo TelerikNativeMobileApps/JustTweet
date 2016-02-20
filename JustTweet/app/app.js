@@ -1,2 +1,2 @@
 var application = require("application");
-application.start({ moduleName: "tweets/create-page" });
+application.start({ moduleName: "login/login-page" });
