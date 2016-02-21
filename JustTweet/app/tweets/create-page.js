@@ -12,7 +12,7 @@ exports.loaded = function(args) {
     var page = args.object;
     page.bindingContext = newTweet;
 
-    page.on(gestures.GestureTypes.swipe, function (args) {
+    page.on(gestures.GestureTypes.swipe, function(args) {
         if (args.direction == 1) {
             navigation.goToTweetsPage();
         }
@@ -21,14 +21,15 @@ exports.loaded = function(args) {
 
 exports.create = function() {
     newTweet.create()
+        .then(navigation.goToTweetsPage)
         .catch(function(err) {
+            console.log('error: ' + err)
             dialogsModule.alert({
                 message: err,
                 okButtonText: "OK"
             });
             return Promise.reject();
-        })
-        .then(navigation.goToTweetsPage);
+        });
 };
 
-exports.enableLocationTap =  newTweet.enableLocation;
+exports.enableLocationTap = newTweet.enableLocation;

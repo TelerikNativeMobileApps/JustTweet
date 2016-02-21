@@ -1,4 +1,5 @@
 var gestures = require("ui/gestures");
+var listViewModule = require("ui/list-view");
 var Observable = require("data/observable").Observable;
 var TweetListViewModel = require("~/shared/view-models/all-tweets-view-model");
 var navigation = require("~/shared/navigation");
@@ -21,29 +22,14 @@ exports.loaded = function(args) {
         if (args.direction == 2) {
             navigation.goToCreatePage();
         }
+    });
 
-        if (args.direction == 4) {
-            if (tweetList.length < 10) {
-                return;
-            }
-
-            pageNumber++;
-            loadData(pageNumber);
-        }
-
-        if (args.direction == 8) {
-            if (pageNumber < 1) {
-                loadData(1);
-                return;
-            }
-
-            pageNumber--;
-            loadData(pageNumber);
-        }
+    listView.on(listViewModule.ListView.loadMoreItemsEvent, function(data) {
+        pageNumber++;
+        loadData(pageNumber)
     });
 
     function loadData(page) {
-        tweetList.empty();
         pageData.set("isLoading", true);
         tweetList.load(page)
             .then(function() {
@@ -55,5 +41,6 @@ exports.loaded = function(args) {
             });
     }
 
+    tweetList.empty();
     loadData();
 };
