@@ -21,7 +21,7 @@ exports.loaded = function(args) {
         if (args.direction == 2) {
             navigation.goToCreatePage();
         }
-        
+
         if (args.direction == 4) {
             if (tweetList.length < 10) {
                 return;

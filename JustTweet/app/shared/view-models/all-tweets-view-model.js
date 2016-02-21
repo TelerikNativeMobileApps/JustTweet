@@ -13,7 +13,9 @@ function TweetListViewModel(items) {
                 data.forEach(function(tweets) {
                     viewModel.push({
                         text: tweets.Text,
-                        id: tweets.Id
+                        id: tweets.Id,
+                        createdOn:tweets.CreatedOn,
+                        author: tweets.Author
                     });
                 });
             });

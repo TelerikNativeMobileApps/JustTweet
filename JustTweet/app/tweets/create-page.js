@@ -30,3 +30,5 @@ exports.create = function() {
         })
         .then(navigation.goToTweetsPage);
 };
+
+exports.enableLocationTap =  newTweet.enableLocation;
