@@ -25,7 +25,7 @@ exports.create = function() {
         .catch(function(err) {
             console.log('error: ' + err)
             dialogsModule.alert({
-                message: err,
+                message: err.toString(),
                 okButtonText: "OK"
             });
             return Promise.reject();
