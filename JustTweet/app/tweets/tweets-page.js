@@ -7,28 +7,53 @@ var page;
 var tweetList = new TweetListViewModel([]);
 var pageData = new Observable({
     tweetList: tweetList,
-    tweet: ""
+    tweet: "",
 });
 
 exports.loaded = function(args) {
     page = args.object;
     var listView = page.getViewById("tweetList");
+    var pageNumber = 1;
 
     page.bindingContext = pageData;
 
-     listView.on(gestures.GestureTypes.swipe, function (args) {
+    listView.on(gestures.GestureTypes.swipe, function(args) {
         if (args.direction == 2) {
             navigation.goToCreatePage();
         }
+        
+        if (args.direction == 4) {
+            if (tweetList.length < 10) {
+                return;
+            }
+
+            pageNumber++;
+            loadData(pageNumber);
+        }
+
+        if (args.direction == 8) {
+            if (pageNumber < 1) {
+                loadData(1);
+                return;
+            }
+
+            pageNumber--;
+            loadData(pageNumber);
+        }
     });
 
-    tweetList.empty();
-    pageData.set("isLoading", true);
-    tweetList.load().then(function() {
-        pageData.set("isLoading", false);
-        listView.animate({
-            opacity: 1,
-            duration: 1000
-        });
-    });
+    function loadData(page) {
+        tweetList.empty();
+        pageData.set("isLoading", true);
+        tweetList.load(page)
+            .then(function() {
+                pageData.set("isLoading", false);
+                listView.animate({
+                    opacity: 1,
+                    duration: 1000
+                });
+            });
+    }
+
+    loadData();
 };
