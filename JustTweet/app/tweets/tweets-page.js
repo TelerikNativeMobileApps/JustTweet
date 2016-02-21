@@ -16,9 +16,9 @@ exports.loaded = function(args) {
 
     page.bindingContext = pageData;
 
-     page.on(gestures.GestureTypes.swipe, function (args) {
+     listView.on(gestures.GestureTypes.swipe, function (args) {
         if (args.direction == 2) {
-            navigation.goToRegisterPage();
+            navigation.goToCreatePage();
         }
     });
 

@@ -2,6 +2,7 @@ var viewModule = require("ui/core/view");
 var dialogsModule = require("ui/dialogs");
 var CreateTweetViewModel = require("~/shared/view-models/create-tweet-view-model");
 var navigation = require("~/shared/navigation");
+var gestures = require("ui/gestures");
 
 var newTweet = new CreateTweetViewModel({
     tweet: ""
@@ -10,6 +11,12 @@ var newTweet = new CreateTweetViewModel({
 exports.loaded = function(args) {
     var page = args.object;
     page.bindingContext = newTweet;
+
+    page.on(gestures.GestureTypes.swipe, function (args) {
+        if (args.direction == 1) {
+            navigation.goToTweetsPage();
+        }
+    });
 };
 
 exports.create = function() {
@@ -21,5 +28,5 @@ exports.create = function() {
             });
             return Promise.reject();
         })
-        .then(navigation.goToListPage);
+        .then(navigation.goToTweetsPage);
 };
