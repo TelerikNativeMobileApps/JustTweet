@@ -5,14 +5,17 @@ var URL = "api/tweets";
 function TweetListViewModel(items) {
     var viewModel = new ObservableArray(items);
 
-    viewModel.load = function() {
+    viewModel.load = function(page) {
+        var page =  page || 1;
         return requester
-            .get(URL)
+            .get(URL + '?page=' + page)
             .then(function(data) {
                 data.forEach(function(tweets) {
                     viewModel.push({
                         text: tweets.Text,
-                        id: tweets.Id
+                        id: tweets.Id,
+                        createdOn:tweets.CreatedOn,
+                        author: tweets.Author
                     });
                 });
             });

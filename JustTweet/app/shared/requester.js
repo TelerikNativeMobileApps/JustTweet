@@ -1,6 +1,7 @@
 var config = require("./config");
 
 function request(url, method, data) {
+    console.log(config.token)
     return fetch(config.apiUrl + url, {
             method: method,
             body: JSON.stringify(data),

@@ -1,5 +1,6 @@
 <Page loaded="loaded">
     <StackLayout orientation="vertical">
+    	<Button row="0" text="Enable Location" tap="enableLocationTap"/>
         <Image src="~/images/logo.png" stretch="none" horizontalAlignment="center" id="logo" />
         <TextView hint="tweet" autocapitalizationType="true" id="tweet" text="{{ tweet }}" />
         <Button text="Post" tap="create" />
