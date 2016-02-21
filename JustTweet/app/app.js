@@ -1,4 +1,7 @@
 var application = require("application");
-//application.start({ moduleName: "tweets/tweets-page" });
-application.start({ moduleName: "login/login-page" });
-//application.start({ moduleName: "tweets/create-page" });
+var navigation = require("~/shared/navigation");
+
+application.start({
+    // will be fixed for android in 1.7
+	moduleName: global.android ? "login/login-page" : navigation.startingPage()
+})

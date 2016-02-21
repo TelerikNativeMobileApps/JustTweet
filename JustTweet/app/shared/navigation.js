@@ -26,6 +26,6 @@ module.exports = {
 		});
 	},
 	startingPage: function() {
-		return config.token ? "list/list" : "login/login";
+		return config.token ? "tweets/tweets-page" : "login/login-page";
 	}
 };
