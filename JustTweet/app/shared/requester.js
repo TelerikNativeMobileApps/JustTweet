@@ -1,24 +1,44 @@
 var config = require("./config");
+var http = require("http");
 
-function request(url, method, data) {
-    console.log(config.token)
+function get(url) {
     return fetch(config.apiUrl + url, {
-            method: method,
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + config.token
-            }
-        })
-        .then(handleErrors)
-        .then(function(response) {
-            return response.json();
-        });
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + config.token
+        }
+    })
+    .then(handleErrorsGet)
+    .then(function(response) {
+        return response.json();
+    });
 }
 
-function handleErrors(response) {
+function post(url, data) {
+    return http.request({
+        url: config.apiUrl + url,
+        method: 'POST',
+        content: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + config.token
+        }
+    })
+    .then(handleErrorsPost);
+}
+
+function handleErrorsGet(response) {
     if (!response.ok) {
-        console.log(JSON.stringify(response));
+        throw Error(response.statusText);
+    }
+
+    return response;
+}
+
+function handleErrorsPost(response) {
+    if (response.statusCode != 200) {
+        console.log(response.statusCode)
         throw Error(response.statusText);
     }
 
@@ -27,9 +47,9 @@ function handleErrors(response) {
 
 module.exports = {
     get: function(url) {
-        return request(url, 'GET');
+        return get(url);
     },
     post: function(url, data) {
-        return request(url, 'POST', data);
+        return post(url, data);
     }
 }
