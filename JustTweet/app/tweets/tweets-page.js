@@ -3,6 +3,7 @@ var listViewModule = require("ui/list-view");
 var Observable = require("data/observable").Observable;
 var TweetListViewModel = require("~/shared/view-models/all-tweets-view-model");
 var navigation = require("~/shared/navigation");
+var sounds = require("~/shared/sounds");
 var page;
 
 var tweetList = new TweetListViewModel([]);
@@ -20,12 +21,14 @@ exports.loaded = function(args) {
 
     listView.on(gestures.GestureTypes.swipe, function(args) {
         if (args.direction == 2) {
+            sounds["channel"].play();
             navigation.goToCreatePage();
         }
     });
 
     listView.on(listViewModule.ListView.loadMoreItemsEvent, function(data) {
         pageNumber++;
+         sounds["solemn"].play();
         loadData(pageNumber)
     });
 

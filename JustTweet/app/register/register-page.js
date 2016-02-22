@@ -4,6 +4,7 @@ var gestures = require("ui/gestures");
 var dialogsModule = require("ui/dialogs");
 var UserViewModel = require("~/shared/view-models/user-view-model");
 var navigation = require("~/shared/navigation");
+var sounds = require("~/shared/sounds");
 
 var user = new UserViewModel({
     email: "",
@@ -36,6 +37,7 @@ exports.loaded = function(args) {
 
     page.on(gestures.GestureTypes.swipe, function (args) {
         if (args.direction == 1) {
+            sounds["channel"].play();
             navigation.goToLoginPage();
         }
     });
