@@ -1,4 +1,4 @@
-<Page loaded="loaded">
+<Page loaded="loaded" actionBarHidden="true">
     <StackLayout orientation="vertical">
     	<Button row="0" text="Enable Location" tap="enableLocationTap"/>
         <Image src="~/images/logo.png" stretch="none" horizontalAlignment="center" id="logo" />
