@@ -1,6 +1,6 @@
 <Page loaded="loaded" actionBarHidden="true">
     <StackLayout orientation="vertical">
-        <Image src="~/images/logo.png" stretch="none" horizontalAlignment="center" id="logo" />
+        <Image src="~/images/tweet.png" stretch="none" horizontalAlignment="center" id="tweeter" />
         <TextView hint="tweet" autocapitalizationType="true" id="tweet" text="{{ tweet }}" />
         <Button text="Post" tap="create" />
     </StackLayout>

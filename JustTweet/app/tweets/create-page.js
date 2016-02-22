@@ -7,6 +7,7 @@ var gestures = require("ui/gestures");
 var newTweet = new CreateTweetViewModel({
     tweet: ""
 });
+var tweeter;
 
 exports.loaded = function(args) {
     var page = args.object;
@@ -17,6 +18,32 @@ exports.loaded = function(args) {
             navigation.goToTweetsPage();
         }
     });
+
+    tweeter = viewModule.getViewById(page, "tweeter");
+
+    tweeter.on(gestures.GestureTypes.longPress, function(args) {
+        tweeter.animate({ translate: { x: -20, y: 0}, rotate: -10, duration: 50 })
+            .then(function() { return tweeter.animate({ rotate: 10, translate: { x: 20, y: 0}, duration: 100}) })
+            .then(function() { return tweeter.animate({ rotate: 0, translate: { x: 0, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: -10, translate: { x: -20, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: 10, translate: { x: 20, y: 0}, duration: 100}) })
+            .then(function() { return tweeter.animate({ rotate: 0, translate: { x: 0, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: -10, translate: { x: -20, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: 10, translate: { x: 20, y: 0}, duration: 100}) })
+            .then(function() { return tweeter.animate({ rotate: 0, translate: { x: 0, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: -10, translate: { x: -20, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: 10, translate: { x: 20, y: 0}, duration: 100}) })
+            .then(function() { return tweeter.animate({ rotate: 0, translate: { x: 0, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: -10, translate: { x: -20, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: 10, translate: { x: 20, y: 0}, duration: 100}) })
+            .then(function() { return tweeter.animate({ rotate: 0, translate: { x: 0, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: -10, translate: { x: -20, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: 10, translate: { x: 20, y: 0}, duration: 100}) })
+            .then(function() { return tweeter.animate({ rotate: 0, translate: { x: 0, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: -10, translate: { x: -20, y: 0}, duration: 50}) })
+            .then(function() { return tweeter.animate({ rotate: 10, translate: { x: 20, y: 0}, duration: 100}) })
+            .then(function() { return tweeter.animate({ rotate: 0, translate: { x: 0, y: 0}, duration: 50}) });
+        })
 };
 
 exports.create = function() {

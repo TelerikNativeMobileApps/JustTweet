@@ -11,15 +11,15 @@ TextField, TextView {
     padding: 10;
 }
 
-#logo {
-    margin-top: 50;
+#logo, #tweeter {
+    margin-top: 70;
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 40;
 }
 
 #registerImg {
-    margin-top: 30;
+    margin-top: 50;
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 20;
