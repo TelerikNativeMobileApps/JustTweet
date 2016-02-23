@@ -1,7 +1,7 @@
 
 Label {
-    margin: 20;
-    horizontal-align: center;
+    margin: 10;
+    horizontal-align: top;
     vertical-align: center;
      color: white;
      font-size: 20px;
@@ -12,8 +12,8 @@ TextField {
     border-color: #034793;
 }
 
-.author {
-	 horizontal-align: left;
-	 color: red;
-    vertical-align: center;
+#helperLabel {
+    color: lightgray;
+    font-size: 14px;
+    margin-top: 40;
 }

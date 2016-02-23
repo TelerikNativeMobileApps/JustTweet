@@ -3,7 +3,8 @@
         <ListView items="{{ tweetList }}" id="tweetList" row="1" colSpan="2">
             <ListView.itemTemplate>
                 <GridLayout columns="*, auto">
-                    <Label text="{{ text }}"/>
+                    <Label text="{{ text }}" id="text"/>
+                    <Label text="{{'By ' + author + ' on ' + createdOn }}" id="helperLabel"/>
                 </GridLayout>
             </ListView.itemTemplate>
         </ListView>
